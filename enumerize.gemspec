@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/enumerize/version', __FILE__)
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+require 'enumerize/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Sergey Nartimov"]
@@ -15,5 +16,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Enumerize::VERSION
 
-  gem.add_dependency('activesupport', '>= 3.1.3')
+  gem.add_dependency('activesupport', '>= 3.0')
 end
