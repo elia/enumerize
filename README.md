@@ -79,6 +79,12 @@ get attribute value:
 @user.sex_text # or @user.sex.text
 ```
 
+get all values for enumerized attribute:
+
+```ruby
+User.sex.values # or User.enumerized_attributes[:sex].values
+```
+
 use it with forms:
 
 ```erb
@@ -127,6 +133,23 @@ user.sex.male? #=> true
 user.sex.female? #=> false
 ```
 
+To make some attributes shared across different classes it's possible to define them in a separate module and then include it into classes:
+
+```ruby
+module PersonEnumerations
+  include Enumerize
+
+  enumerize :sex, :in => %w[male female]
+end
+
+class Person
+  include PersonEnumerations
+end
+
+class User
+  include PersonEnumerations
+end
+```
 
 
 ## Contributing

@@ -53,4 +53,18 @@ describe Enumerize do
   it 'has default value' do
     model.new.role.must_equal 'user'
   end
+
+  it 'validates inclusion' do
+    user = model.new
+    user.role = 'wrong'
+    user.wont_be :valid?
+  end
+
+  it 'assigns value on loaded record' do
+    model.delete_all
+    model.create!(:sex => :male)
+    user = model.first
+    user.sex = :female
+    user.sex.must_equal 'female'
+  end
 end
